@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="./style/app.css">
     <!-- endbuild -->
 
-    <script src="http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+    <script src="http://hlj-static.oss-cn-beijing.aliyuncs.com/js-lib/fastclick.js"></script>
     <!-- build:js js/angular.js -->
     <script src="../bower_components/angular/angular.min.js"></script>
     <script src="./libs/angular-i18n/angular-locale_zh-cn.js"></script>
@@ -19,7 +19,6 @@
 </head>
 <body ng-controller="BCPTAPPCtrl">
 
-<p>1</p>
 <menu></menu>
 
 <div ng-view></div>
@@ -48,10 +47,11 @@
 <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <!-- endbuild -->
 
+<user></user>
 <!-- build:js js/app.js-->
+<script src="./common/module.js"></script>
 <script src="./common/menu/module.js"></script>
-
-
+<script src="./common/user/module.js"></script>
 <script src="./app.js"></script>
 <!-- endbuild -->
 <script>

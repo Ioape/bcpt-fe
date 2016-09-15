@@ -9,7 +9,9 @@ angular
     .module('BCPTAPP', [
         'ngRoute',
         'ui.bootstrap',
-        'menu'
+        'menu',
+        'user',
+        'common'
     ])
     .value("LoginUrl", "/userLogin?returnUrl=" + encodeURIComponent(window.location.href))
     .config([
@@ -21,29 +23,30 @@ angular
             $routeProvider.otherwise({redirectTo: '/index'});
             $httpProvider.interceptors.push('BCPTInterceptor');
 
-            menuList.push({
-                name: '用户', url: '#userManager'
-            });
-            menuList.push({
-                name: '任务', url: '',
-                children: [
-                    {name: '任务管理', url: '#taskManager'},
-                    {name: '任务统计（个人）', url: '#taskStatistics'}
-                ]
-            });
-            menuList.push({
-                name: '薪资', url: '',
-                children: [
-                    {name: '薪资查看(个人)', url: '#basisSalary'},
-                    {name: '薪资查看(学校)', url: '#basisSalarySchool'}
-                ]
-            });
+
+            menuList.push(
+                {name: '首页', url: '#index'},
+                {name: '论坛', url: 'http://bbs.ghtt.net/forum-176-1.html'},
+                {name: '影视', url: '#movie'},
+                {name: '综合', url: '#common'},
+                {name: '候选', url: '#offers'},
+                {name: '发布', url: '#upload'},
+                {name: '字幕', url: '#subtitles'},
+                {name: '用户设置', url: '#usercp'},
+                {name: '排行榜', url: '#rank'},
+                {name: '日志', url: '#record'},
+                {name: '规则', url: '#rules'},
+                {name: '常见问题', url: '#faq'},
+                {name: '常见问题', url: '#faq'}
+            );
         }
     ])
     .controller('BCPTAPPCtrl', [
         '$scope',
         'BCPTInterceptor',
-        function ($scope, BCPTInterceptor) {
+        'appGlobal',
+        '$uibModal',
+        function ($scope, BCPTInterceptor,appGlobal,$uibModal) {
             $scope.alerts = [];
             $scope.showAlert = function (type, msg) {
                 $scope.alerts.push({type: type || 'danger', msg: msg});
@@ -55,6 +58,29 @@ angular
             BCPTInterceptor.setResponseErrorHanlder(function (msg) {
                 $scope.showAlert('danger', msg);
             });
+
+            appGlobal.setAlert( function( config ){
+                $scope.showAlert( config.type, config.msg );
+            } );
+            appGlobal.setConfirm( function( title, content, config){
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'global-confirm.html',
+                    scope: $scope,
+                    size: 'sm'
+                });
+                var defaultConfig = {
+                    showOkBtn: true,
+                    showCancelBtn: true
+                };
+                $scope.confirm = {
+                    content: content,
+                    title: title,
+                    config: angular.extend(defaultConfig, config)
+                };
+
+                return modalInstance.result;
+            } );
         }
     ])
     .factory('appGlobal', function () {
@@ -115,7 +141,7 @@ angular
                             switch (response.data.code + "") {
                                 case "401" :
                                 {
-                                    appGlobal.showConfirm("登录提示", "请先去登录吧！", {showCancelBtn: false}).then(gotoLogin);
+                                    appGlobal.showConfirm("登录提示", "登陆已失效", {showCancelBtn: false}).then(gotoLogin);
                                     break;
                                 }
                                 default:
