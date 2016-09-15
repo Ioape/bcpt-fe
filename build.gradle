@@ -1,0 +1,11 @@
+apply plugin: 'java'
+
+task pack (type: Zip){
+	from "build"
+	destinationDir file('gradle/build')
+	println 'pack'
+}
+
+task del (type: Delete){
+    delete files("gradle")
+}

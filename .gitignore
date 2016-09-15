@@ -1,0 +1,12 @@
+mock
+/.gradle
+/.DS_Store
+/.settings
+.classpath
+.project
+.idea
+gradlew
+gradlew.bat
+gradle/*
+pttms-manager.iml
+/build/
