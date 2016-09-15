@@ -25,7 +25,8 @@
 
 <!-- 全局 alert -->
 <div ms-if="alerts.length" class="global-notice">
-    <uib-alert dismiss-on-timeout="4000" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"><p class="text-center" ng-bind-html="alert.msg|trustHtml"></p></uib-alert>
+    <uib-alert dismiss-on-timeout="4000" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"><p
+            class="text-center" ng-bind-html="alert.msg|trustHtml"></p></uib-alert>
 </div>
 <!-- 全局 confirm -->
 <script type="text/ng-template" id="global-confirm.html">
@@ -37,7 +38,8 @@
     </div>
     <div class="modal-footer">
         <button ng-if="confirm.config.showOkBtn" class="btn btn-primary" type="button" ng-click="$close()">确定</button>
-        <button ng-if="confirm.config.showCancelBtn" class="btn btn-warning" type="button" ng-click="$dismiss()">取消</button>
+        <button ng-if="confirm.config.showCancelBtn" class="btn btn-warning" type="button" ng-click="$dismiss()">取消
+        </button>
     </div>
 </script>
 
@@ -52,10 +54,24 @@
 <script src="./common/module.js"></script>
 <script src="./common/menu/module.js"></script>
 <script src="./common/user/module.js"></script>
+
+<script src="./menu-rank/module.js"></script>
+<script src="./menu-common/module.js"></script>
+<script src="./menu-faq/module.js"></script>
+<script src="./menu-index/module.js"></script>
+<script src="./menu-movie/module.js"></script>
+<script src="./menu-offers/module.js"></script>
+<script src="./menu-rank/module.js"></script>
+<script src="./menu-record/module.js"></script>
+<script src="./menu-rules/module.js"></script>
+<script src="./menu-staff/module.js"></script>
+<script src="./menu-subtitles/module.js"></script>
+<script src="./menu-upload/module.js"></script>
+<script src="./menu-usercp/module.js"></script>
 <script src="./app.js"></script>
 <!-- endbuild -->
 <script>
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         FastClick.attach(document.body);
     }, false);
 </script>

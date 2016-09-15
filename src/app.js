@@ -7,11 +7,10 @@
 // Declare app level module which depends on views, and components
 angular
     .module('BCPTAPP', [
-        'ngRoute',
-        'ui.bootstrap',
-        'menu',
-        'user',
-        'common'
+        'ngRoute', 'ui.bootstrap', 'menu', 'user', 'common',
+        'menu-rank', 'menu-usercp', 'menu-common',
+        'menu-faq', 'menu-index', 'menu-subtitles', 'menu-movie',
+        'menu-offers','menu-record','menu-upload','menu-staff','menu-rules'
     ])
     .value("LoginUrl", "/userLogin?returnUrl=" + encodeURIComponent(window.location.href))
     .config([
@@ -37,7 +36,7 @@ angular
                 {name: '日志', url: '#record'},
                 {name: '规则', url: '#rules'},
                 {name: '常见问题', url: '#faq'},
-                {name: '常见问题', url: '#faq'}
+                {name: '管理组', url: '#staff'}
             );
         }
     ])

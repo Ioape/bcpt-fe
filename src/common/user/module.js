@@ -12,12 +12,6 @@ angular.module('user', ["ui.bootstrap"])
             var data = {};
             data = userService.getUserInfo().then(function (data) {
                 $scope.user = data ? data : {};
-                $scope.user.name = 1;
-                $scope.user.mybonus = 2;
-                $scope.user.invite = 3;
-                $scope.user.share = '';
-                $scope.user.download = '';
-                $scope.user.share = '';
             });
         }
     ])
@@ -40,7 +34,7 @@ angular.module('user', ["ui.bootstrap"])
         var directiveDefinitionObject = {
             templateUrl: 'common/user/module.html',
             transclude: false,
-            restrict: 'E',
+            restrict: 'E'
         };
         return directiveDefinitionObject;
     });
