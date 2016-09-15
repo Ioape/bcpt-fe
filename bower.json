@@ -1,6 +1,6 @@
 {
   "name": "bcpt-fa",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "百川pt",
   "dependencies": {
     "angular-bootstrap": "~0.14.3",

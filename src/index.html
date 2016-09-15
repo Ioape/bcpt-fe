@@ -1,14 +1,63 @@
 <!DOCTYPE html>
-<html lang="zh" ng-app>
+<html ng-app="BCPTAPP">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="js/angular.js"></script>
+    <title>百川PT</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="./style/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./style/bootstrap/css/bootstrap-theme.min.css">
+    <!-- build:css style/app.css -->
+    <link rel="stylesheet" type="text/css" href="./style/app.css">
+    <!-- endbuild -->
+
+    <script src="http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+    <!-- build:js js/angular.js -->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="./libs/angular-i18n/angular-locale_zh-cn.js"></script>
+    <!-- endbuild -->
 </head>
-<body>
-<p>Hello {{'a1b'}}</p>
+<body ng-controller="BCPTAPPCtrl">
+
+<p>1</p>
+<menu></menu>
+
+<div ng-view></div>
+
+<!-- 全局 alert -->
+<div ms-if="alerts.length" class="global-notice">
+    <uib-alert dismiss-on-timeout="4000" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"><p class="text-center" ng-bind-html="alert.msg|trustHtml"></p></uib-alert>
+</div>
+<!-- 全局 confirm -->
+<script type="text/ng-template" id="global-confirm.html">
+    <div class="modal-header" ng-show="!!confirm.title">
+        <h3 class="modal-title">{{confirm.title}}</h3>
+    </div>
+    <div class="modal-body" style="max-height: 500px; overflow: auto;">
+        <p ng-bind-html="confirm.content|trustHtml"></p>
+    </div>
+    <div class="modal-footer">
+        <button ng-if="confirm.config.showOkBtn" class="btn btn-primary" type="button" ng-click="$close()">确定</button>
+        <button ng-if="confirm.config.showCancelBtn" class="btn btn-warning" type="button" ng-click="$dismiss()">取消</button>
+    </div>
+</script>
+
+<!-- build:js js/plugin.js-->
+<script src="../bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+<script src="../bower_components/angular-route/angular-route.min.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<!-- endbuild -->
+
+<!-- build:js js/app.js-->
+<script src="./common/menu/module.js"></script>
+
+
+<script src="./app.js"></script>
+<!-- endbuild -->
+<script>
+    window.addEventListener('load', function() {
+        FastClick.attach(document.body);
+    }, false);
+</script>
 </body>
 </html>
-<script>
-
-</script>

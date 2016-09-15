@@ -4,6 +4,10 @@ echo "Script location: ${BASEDIR}";
 
 cd ${BASEDIR};
 
+echo "==============bower install===============";
+bower install;
+echo "==============bower install end===============";
+
 echo "==============grunt install===============";
 npm install;
 echo "==============grunt install end===============";
