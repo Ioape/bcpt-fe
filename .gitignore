@@ -10,3 +10,5 @@ gradlew.bat
 gradle/*
 pttms-manager.iml
 /build/
+/bower_components
+/node_modules
