@@ -10,7 +10,7 @@ angular.module('user', ["ui.bootstrap"])
         'userService',
         function ($scope, $http, userService) {
             var data = {};
-            data = userService.getUserInfo().then(function (data) {
+            userService.getUserInfo().then(function (data) {
                 $scope.user = data ? data : {};
             });
         }
